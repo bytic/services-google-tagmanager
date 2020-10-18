@@ -47,9 +47,14 @@ trait HasConfigurationTrait
     /**
      * @param bool $enabled
      */
-    public function setEnabled(bool $enabled)
+    public function setEnabled($enabled)
     {
-        $this->enabled = $enabled;
+        if (is_int($enabled)) {
+            $enabled = $enabled === 1;
+        } elseif (is_string($enabled)) {
+            $enabled = in_array($enabled, ['1', 'true', 'TRUE']);
+        }
+        $this->enabled = $enabled === true;
     }
 
     /**

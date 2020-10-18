@@ -3,7 +3,6 @@
 namespace ByTIC\GoogleTagManager\Config\Traits;
 
 use ByTIC\GoogleTagManager\Config\Config;
-use ByTIC\GoogleTagManager\Config\ConfigConfig;
 use Nip\Utility\Str;
 
 /**
