@@ -22,7 +22,7 @@ class CanRenderTraitTest extends AbstractTest
         $manager = new GTManager();
         $manager->enable();
         $manager->setId('GT-999');
-        $manager->dataSet('pageCategory','signup');
+        $manager->dataSet('pageCategory', 'signup');
         self::assertSame("<!-- Google Tag Manager -->
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -33,7 +33,7 @@ class CanRenderTraitTest extends AbstractTest
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GT-999');</script>
-<!-- End Google Tag Manager -->",$manager->head());
+<!-- End Google Tag Manager -->", $manager->head());
     }
 
     public function test_body_returns_empty_not_enabled()
@@ -50,6 +50,6 @@ class CanRenderTraitTest extends AbstractTest
         self::assertSame('<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GT-999"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->',$manager->body());
+<!-- End Google Tag Manager (noscript) -->', $manager->body());
     }
 }
