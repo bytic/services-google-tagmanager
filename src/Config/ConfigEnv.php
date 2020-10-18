@@ -8,7 +8,7 @@ namespace ByTIC\GoogleTagManager\Config;
  */
 interface ConfigEnv
 {
-    const ENABLED = 'GOOGLE_TAGMANAGER_ENABLED';
+    public const ENABLED = 'GOOGLE_TAGMANAGER_ENABLED';
 
-    const ID = 'GOOGLE_TAGMANAGER_ID';
+    public const ID = 'GOOGLE_TAGMANAGER_ID';
 }

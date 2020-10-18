@@ -14,7 +14,6 @@ use Mockery;
  */
 class GoogleTagManagerTest extends AbstractTest
 {
-
     public function test_initFromEnviroment()
     {
         $dotenv = \Dotenv\Dotenv::createImmutable(TEST_FIXTURE_PATH, '.env.generic');

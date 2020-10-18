@@ -1,4 +1,6 @@
-<?php if ($enabled === false) return; ?>
+<?php if ($enabled === false) {
+    return;
+} ?>
 <!-- Google Tag Manager -->
 <script>
     window.dataLayer = window.dataLayer || [];

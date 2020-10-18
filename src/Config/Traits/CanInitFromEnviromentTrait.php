@@ -12,7 +12,6 @@ use Nip\Utility\Str;
  */
 trait CanInitFromEnviromentTrait
 {
-
     /**
      * @return static|Config
      */

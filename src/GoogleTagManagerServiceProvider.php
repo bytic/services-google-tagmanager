@@ -15,7 +15,6 @@ use ByTIC\GoogleTagManager\Middleware\GoogleTagManagerMiddleware;
  */
 class GoogleTagManagerServiceProvider extends AbstractServiceProvider
 {
-
     /**
      * Returns a boolean if checking whether this provider provides a specific
      * service or returns an array of provided services if no argument passed.
