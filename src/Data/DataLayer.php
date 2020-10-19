@@ -13,7 +13,7 @@ class DataLayer
     /**
      * @var array
      */
-    protected $data;
+    protected $data = [];
 
     /**
      * DataLayer constructor.

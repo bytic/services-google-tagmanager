@@ -9,8 +9,8 @@ use ByTIC\GoogleTagManager\GTManager;
  * Class Manager
  * @package ByTIC\Manager\Utility
  *
- * @method string head()
- * @method string body()
+ * @method static string head()
+ * @method static string body()
  */
 class GoogleTagManager
 {

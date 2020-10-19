@@ -3,6 +3,7 @@
 namespace ByTIC\GoogleTagManager\Config\Traits;
 
 use ByTIC\GoogleTagManager\Config\Config;
+use Nip\Container\Container;
 use Nip\Utility\Str;
 
 /**
@@ -29,11 +30,15 @@ trait CanInitFromConfigTrait
      */
     public static function canInitFromConfig(): bool
     {
-        if (!function_exists('config') || function_exists('app')) {
+        if (!function_exists('config') || !function_exists('app')) {
             return false;
         }
 
-        $config = config();
+        try {
+            $config = config();
+        } catch (\Exception $e) {
+            return false;
+        }
         foreach (static::$configRoots as $root) {
             if ($config->has($root)) {
                 static::$configRoot = $root;
@@ -61,6 +66,6 @@ trait CanInitFromConfigTrait
     {
         /** @noinspection PhpUnhandledExceptionInspection */
         $config = config();
-        return $config->get(static::$configRoot . '.' > $value, $default);
+        return $config->get(static::$configRoot . '.' . $value, $default);
     }
 }

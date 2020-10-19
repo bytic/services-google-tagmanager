@@ -13,10 +13,11 @@ trait AutoInitTrait
      */
     public static function autoInit()
     {
-        if (static::canInitFromEnv()) {
-            return static::fromEnv();
-        }
         if (static::canInitFromConfig()) {
+            return static::fromConfig();
+        }
+
+        if (static::canInitFromEnv()) {
             return static::fromEnv();
         }
         return new static();

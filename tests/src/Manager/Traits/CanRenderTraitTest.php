@@ -17,6 +17,24 @@ class CanRenderTraitTest extends AbstractTest
         self::assertEmpty($manager->head());
     }
 
+    public function test_head_no_data()
+    {
+        $manager = new GTManager();
+        $manager->enable();
+        $manager->setId('GT-999');
+        self::assertSame("<!-- Google Tag Manager -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    dataLayer = [{}];
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GT-999');</script>
+<!-- End Google Tag Manager -->", $manager->head());
+    }
+
     public function test_head()
     {
         $manager = new GTManager();

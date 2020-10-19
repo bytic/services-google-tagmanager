@@ -1,10 +1,12 @@
-<?php if ($enabled === false) {
+<?php
+/** @var \ByTIC\GoogleTagManager\Data\DataLayer $dataLayer */
+if ($enabled === false) {
     return;
 } ?>
 <!-- Google Tag Manager -->
 <script>
     window.dataLayer = window.dataLayer || [];
-    dataLayer = [<?php echo $dataLayer->toJson() ?>];
+    dataLayer = [<?php echo $dataLayer->count() < 1 ? '{}' : $dataLayer->toJson() ?>];
 </script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
