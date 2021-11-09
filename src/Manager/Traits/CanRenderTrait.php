@@ -30,6 +30,7 @@ trait CanRenderTrait
         $parameters['enabled'] = $this->isEnabled();
         $parameters['id'] = $this->getId();
         $parameters['dataLayer'] = $this->getDataLayer();
+        $parameters['consents'] = $this->getConsents();
 
         ob_start();
         extract($parameters);

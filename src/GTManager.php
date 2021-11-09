@@ -12,6 +12,7 @@ class GTManager
 {
     use HasConfigurationTrait;
     use Manager\Traits\HasConfigTrait;
+    use Manager\Traits\HasConsentTrait;
     use Manager\Traits\HasDataTrait;
     use Manager\Traits\CanRenderTrait;
 
