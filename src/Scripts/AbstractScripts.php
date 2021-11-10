@@ -3,8 +3,6 @@
 namespace ByTIC\GoogleTagManager\Scripts;
 
 use ByTIC\GoogleTagManager\GTManager;
-use Nip\Utility\Str;
-use Nip\Utility\Stringable;
 
 /**
  * Class AbstractScripts
@@ -23,8 +21,8 @@ abstract class AbstractScripts
 
     protected function generate(): string
     {
-        $name = basename(get_class($this));
-        $name = strtolower(str_replace('Scripts','', $name));
+        $name = basename(str_replace('\\', '/', get_class($this)));
+        $name = strtolower(str_replace('Scripts', '', $name));
         return $this->renderView($name);
     }
 
