@@ -44,6 +44,11 @@ class DataLayer
         Arr::set($this->data, $key, $value);
     }
 
+    public function push($value)
+    {
+        array_push($this->data, $value);
+    }
+
     /**
      * @return int
      */
@@ -65,9 +70,19 @@ class DataLayer
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->data;
+    }
+
+    public function toStringGtag(): string
+    {
+        $return = [];
+        foreach ($this->data as $value) {
+            $encodedValue = trim(static::encode($value), '[]');
+            $return[] = 'gtag(' . $encodedValue . ');';
+        }
+        return implode("\n", $return);
     }
 
     /**
@@ -77,6 +92,15 @@ class DataLayer
      */
     public function toJson()
     {
-        return json_encode($this->data, JSON_UNESCAPED_UNICODE);
+        return self::encode($this->data);
+    }
+
+    /**
+     * @param $value
+     * @return string
+     */
+    public static function encode($value): string
+    {
+        return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
 }

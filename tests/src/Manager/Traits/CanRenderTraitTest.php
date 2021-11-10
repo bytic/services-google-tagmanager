@@ -33,7 +33,7 @@ class CanRenderTraitTest extends AbstractTest
         $manager = new GTManager();
         $manager->enable();
         $manager->setId('GT-999');
-        $manager->dataSet('pageCategory', 'signup');
+        $manager->dataPush(['pageCategory' => 'signup']);
         self::assertSame(
             file_get_contents(TEST_FIXTURE_PATH . '/output/head_simple.html'),
             $manager->head()

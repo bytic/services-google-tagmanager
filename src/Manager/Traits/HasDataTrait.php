@@ -37,6 +37,17 @@ trait HasDataTrait
      * @param array|string $key
      * @param mixed $value
      */
+    public function dataPush($value = null)
+    {
+        $this->dataLayer->push($value);
+    }
+
+    /**
+     * Add data to the data layer.
+     *
+     * @param array|string $key
+     * @param mixed $value
+     */
     public function dataSet($key, $value = null)
     {
         $this->dataLayer->set($key, $value);
