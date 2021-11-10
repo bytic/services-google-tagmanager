@@ -6,12 +6,7 @@ if ($enabled === false) {
 }
 
 /** @var array $consents */
-$defaultConsents = [];
 if (count($consents)) {
-    foreach ($consents as $consent => $consentValue) {
-        $defaultConsents[$consent] = $consentValue ? 'granted' : 'denied';
-    }
-    $dataLayer->push(['consent', 'default', $defaultConsents]);
     $dataLayer->push(['event' => 'default_consent']);
 }
 ?>
@@ -20,7 +15,8 @@ if (count($consents)) {
     window.dataLayer = window.dataLayer || [];
     function gtag() {dataLayer.push(arguments);}
 
-    <?= $dataLayer->toStringGtag(); ?>
+    <?= count($consents) ? 'gtag("consent","default",'.\ByTIC\GoogleTagManager\Data\DataLayer::encode($consents).');' : ''; ?>
+    <?= $dataLayer->toStringCommand(); ?>
 </script>
 <script>
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

@@ -2,6 +2,9 @@
 
 namespace ByTIC\GoogleTagManager\Manager\Traits;
 
+use ByTIC\GoogleTagManager\Scripts\BodyScripts;
+use ByTIC\GoogleTagManager\Scripts\HeadScripts;
+
 /**
  * Trait CanRenderTrait
  * @package ByTIC\GoogleTagManager\Manager\Traits
@@ -11,35 +14,13 @@ trait CanRenderTrait
     /**
      * @return false|string
      */
-    public function head()
+    public function head(): string
     {
-        return $this->renderView('head');
+        return HeadScripts::render($this);
     }
 
-    public function body()
+    public function body(): string
     {
-        return $this->renderView('body');
-    }
-
-    /**
-     * @param string $name
-     * @param array $parameters
-     */
-    protected function renderView($name, $parameters = [])
-    {
-        $parameters['enabled'] = $this->isEnabled();
-        $parameters['id'] = $this->getId();
-        $parameters['dataLayer'] = $this->getDataLayer();
-        $parameters['consents'] = $this->getConsents();
-
-        ob_start();
-        extract($parameters);
-        require $this->viewsPaths() . '/' . $name . '.php';
-        return ob_get_clean();
-    }
-
-    protected function viewsPaths(): string
-    {
-        return dirname(dirname(dirname(__DIR__))) . '/resources/views';
+        return BodyScripts::render($this);
     }
 }

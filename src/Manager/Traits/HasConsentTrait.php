@@ -76,7 +76,7 @@ trait HasConsentTrait
      */
     public function enableConsent(string $type)
     {
-        $this->editConsent($type, true);
+        $this->editConsent($type, ConsentType::GRANTED);
     }
 
     /**
@@ -84,16 +84,17 @@ trait HasConsentTrait
      */
     public function disableConsent(string $type)
     {
-        $this->editConsent($type, false);
+        $this->editConsent($type, ConsentType::DENIED);
     }
 
     /**
      * @param string $type
-     * @param bool $value
+     * @param string $value
      */
-    public function editConsent(string $type, bool $value = true)
+    public function editConsent(string $type, $value = ConsentType::GRANTED)
     {
         if (in_array($type, ConsentType::TYPES)) {
+            $value = $value == ConsentType::GRANTED ? $value : ConsentType::DENIED;
             $this->consents[$type] = $value;
         }
     }

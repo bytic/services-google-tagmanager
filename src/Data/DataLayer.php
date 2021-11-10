@@ -75,12 +75,16 @@ class DataLayer
         return $this->data;
     }
 
-    public function toStringGtag(): string
+    /**
+     * @param string $command
+     * @return string
+     */
+    public function toStringCommand($command = 'dataLayer.push'): string
     {
         $return = [];
         foreach ($this->data as $value) {
             $encodedValue = trim(static::encode($value), '[]');
-            $return[] = 'gtag(' . $encodedValue . ');';
+            $return[] = $command . '(' . $encodedValue . ');';
         }
         return implode("\n", $return);
     }

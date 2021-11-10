@@ -14,6 +14,9 @@ class ConsentType
     public const TYPE_FUNCTIONALITY = "functionality_storage";
     public const TYPE_SECURITY = "security_storage";
 
+    public const GRANTED = "granted";
+    public const DENIED = "denied";
+
     public const TYPES = [
         self::TYPE_SECURITY,
         self::TYPE_FUNCTIONALITY,
