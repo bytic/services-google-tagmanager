@@ -1,5 +1,11 @@
 <?php
-/** @var \ByTIC\GoogleTagManager\Data\DataLayer $dataLayer */
+
+declare(strict_types=1);
+
+use ByTIC\GoogleTagManager\Data\DataLayer;
+
+/** @var DataLayer $dataLayer */
+/** @var bool $enabled */
 
 if ($enabled === false) {
     return;
@@ -15,7 +21,7 @@ if (count($consents)) {
     window.dataLayer = window.dataLayer || [];
     function gtag() {dataLayer.push(arguments);}
 
-    <?= count($consents) ? 'gtag("consent","default",'.\ByTIC\GoogleTagManager\Data\DataLayer::encode($consents).');' : ''; ?>
+    <?= count($consents) ? 'gtag("consent","default",'. DataLayer::encode(array_merge($consents,['wait_for_update' => '1000'])).');' : ''; ?>
     <?= $dataLayer->toStringCommand(); ?>
 </script>
 <script>
