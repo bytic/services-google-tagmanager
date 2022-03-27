@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ByTIC\GoogleTagManager\Config\Traits;
 
 /**
@@ -11,9 +13,9 @@ trait HasConfigurationTrait
     protected static $configurations = ['id', 'enabled'];
 
     /**
-     * @var string
+     * @var ?string
      */
-    protected $id = '';
+    protected ?string $id = null;
 
     /**
      * @var bool
@@ -23,15 +25,12 @@ trait HasConfigurationTrait
     /**
      * @return string
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     */
-    public function setId(string $id)
+    public function setId(?string $id)
     {
         $this->id = $id;
     }

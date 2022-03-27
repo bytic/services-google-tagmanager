@@ -25,10 +25,11 @@
     "bytic/utility": "^1.0"
   },
   "require-dev": {
-    "bytic/container": "^0.9|^1.0",
+    "bytic/container": "^1.0|^2.0",
     "bytic/config": "^0.9|^1.0",
     "vlucas/phpdotenv": "^5.0",
-    "phpunit/phpunit": "^8.0|^9.0",
-    "mockery/mockery": "^1.0"
-  }
+    "bytic/phpqatools": "^1.0"
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
 }
